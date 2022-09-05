@@ -3,7 +3,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,14 +16,14 @@ public class Windows {
     public static void main(String[] args) throws IOException {
 
 //        basicAjaxInNewPage();
-        basicAjaxInNewPageError();
+//        basicAjaxInNewPageError();
     }
-
+@Test
     public static void basicAjaxInNewPage() {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
         try {
             driver = null;
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/windows-test.html");
             driver.findElement(By.id("gobasicajax")).click();
             String parentWindow = driver.getWindowHandle();
@@ -47,12 +49,12 @@ public class Windows {
             }
         }
     }
-
+@Test
     public static void basicAjaxInNewPageError() throws IOException {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
         try {
             driver = null;
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/windows-test.html");
             driver.findElement(By.id("gobasicajax")).click();
             String parentWindow = driver.getWindowHandle();
@@ -80,6 +82,5 @@ public class Windows {
                 driver.quit();
             }
         }
-
     }
 }

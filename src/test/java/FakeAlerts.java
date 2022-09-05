@@ -3,6 +3,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,16 +12,16 @@ import java.io.IOException;
 public class FakeAlerts {
 
     public static void main(String[] args) throws IOException {
-//        showModalDialog();
-        showModalDialogError();
+        showModalDialog();
+//        showModalDialogError();
     }
-
+@Test
     public static void showModalDialog() {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
 
         try {
 
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/alerts/fake-alert-test.html");
             WebElement modalDialog = driver.findElement(By.id("modaldialog"));
             modalDialog.click();
@@ -34,12 +36,14 @@ public class FakeAlerts {
             }
         }
     }
+
+    @Test
     public static void showModalDialogError() throws IOException {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
 
         try {
 
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/alerts/fake-alert-test.html");
             WebElement modalDialog = driver.findElement(By.id("modaldialog"));
             modalDialog.click();

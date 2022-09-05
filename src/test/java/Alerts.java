@@ -5,22 +5,24 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 
-public class Alerts {
+public class Alerts extends BrowserManager {
 
     public static void main(String[] args) throws IOException {
 //        showPromtBoxButton();
-        showPromtBoxButtonError();
+//        showPromtBoxButtonError();
     }
 
+    @Test
     public static void showPromtBoxButton() {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
         try {
-
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/alerts/alert-test.html");
             WebElement promptExample = driver.findElement(By.id("promptexample"));
             promptExample.click();
@@ -38,10 +40,12 @@ public class Alerts {
             }
         }
     }
+
+    @Test
     public static void showPromtBoxButtonError() throws IOException {
-        ChromeDriver driver = null;
+        RemoteWebDriver driver = null;
         try {
-            driver = BrowserManager.getChromeDriver();
+            driver = BrowserManager.getRemoteWebdriver();
             driver.get("https://testpages.herokuapp.com/styled/alerts/alert-test.html");
             WebElement promptExample = driver.findElement(By.id("promptexample"));
             promptExample.click();
